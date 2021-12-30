@@ -1,0 +1,38 @@
+<div [hidden]="submitted" id="mainDiv" style="background-color: orange;">
+    <form #contactForm="ngForm" (ngSubmit)="submit(contactForm.value)">
+        <div class="form-group">
+          <label for="inputFirstname">First name</label>
+          <input type="text" class="form-control" ngModel name="firstname" id="inputFirstname" placeholder="Enter First name" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+          <label for="inputLastname">Last name</label>
+          <input type="text" class="form-control" ngModel name="lastname" id="inputLastname" placeholder="Enter Last name">
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" [(ngModel)]="msg" name='email' class="form-control" id="inputEmail">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" ngModel name="password" class="form-control" id="inputPassword">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <p>Hello {{msg}}</p>
+      </form>
+    </div>
+
+    <div [hidden]="!submitted" class="jumbotron text-center">
+        <h1 class="display-3">Thank You {{contact.firstname}}!</h1>
+        <p class="lead"><strong>Please check your email {{contact.email}}</strong> for further instructions on how to complete your account setup.</p>
+        <hr>
+        <p>
+          Having trouble? <a href="">Contact us</a>
+        </p>
+        <p class="lead">
+          <a class="btn btn-primary btn-sm" [routerLink]="['/']" routerLinkActive="router-link-active"  role="button">Continue to homepage</a>
+        </p>
+    </div>
